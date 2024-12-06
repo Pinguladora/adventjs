@@ -1,5 +1,9 @@
+/**
+ * @param {number} height - Height of the tree
+ * @param {string} ornament - Symbol to draw
+ * @returns {string} Drawn tree
+ */
 function createXmasTree(height, ornament) {
-  /* Code here */
   const maxWidth = height * 2 - 1
   const baseSize = Math.floor(maxWidth / 2)
   const trunk = "_".repeat(baseSize) + "#" + "_".repeat(baseSize)
