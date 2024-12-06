@@ -1,9 +1,4 @@
 function prepareGifts(gifts) {
-    if (gifts.length == 0) {
-      return [];
-    }
-    
-    return Array.from(
-      new Set(gifts.map(Number))
-    ).sort((a, b) => a - b);
-  }
+  // Use a Set to remove duplicates directly, then sort numerically
+  return [...new Set(gifts)].sort((a,b) => a-b);
+}
