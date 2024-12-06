@@ -1,5 +1,8 @@
+/**
+ * @param {string[]} names - Array of names to frame
+ * @returns {string} The framed names
+ */
 function createFrame(names) {
-  // Code here
   let longest = 0;
   for (let n of names) {
     if (n.length >= longest) {
