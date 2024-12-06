@@ -1,3 +1,7 @@
+/**
+ * @param {{ name: string, quantity: number, category: string }[]} inventory
+ * @returns {object} The organized inventory
+ */
 // Simple loop
 function organizeInventory(inventory) {
     const out = {};
