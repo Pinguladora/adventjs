@@ -15,7 +15,7 @@ function organizeInventory(inventory) {
 }
 
 // Functional
-function organizeInventory(inventory) {
+function organizeInventoryFunc(inventory) {
     return inventory.reduce((out, obj) => {
         const categoryMap = out[obj.category] || {};
         categoryMap[obj.name] = (categoryMap[obj.name] || 0) + obj.quantity;
