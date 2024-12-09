@@ -1,9 +1,4 @@
-/**
- * @param {string[]} board - Represent the train situation
- * @param {'U' | 'D' | 'R' | 'L' } mov - Movement direction
- * @returns {'none' | 'crash' | 'eat'}
- */
-function moveTrain(board, mov) {
+function moveTrainTS(board: string[], mov: 'U' | 'D' | 'R' | 'L'): 'none' | 'crash' | 'eat' {
     const items = { "o": "crash", "*": "eat", "·": "none" }
     // Suppose every row has the same length
     const rowLength = board[0].length
@@ -33,7 +28,7 @@ function moveTrain(board, mov) {
 }
 
 // Cognitive complexity of 2
-function moveTrain2(board, mov) {
+function moveTrain2TS(board: string[], mov: 'U' | 'D' | 'R' | 'L'): 'none' | 'crash' | 'eat' {
     const itemsMapping = { "o": "crash", "*": "eat", "·": "none" }
     // Suppose every row has the same length
     const rowLength = board[0].length
