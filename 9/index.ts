@@ -1,4 +1,8 @@
-function moveTrainTS(board: string[], mov: 'U' | 'D' | 'R' | 'L'): 'none' | 'crash' | 'eat' {
+type Board = string[]
+type Movement = 'U' | 'D' | 'R' | 'L'
+type Result = 'none' | 'crash' | 'eat'
+
+function moveTrainTS(board: Board, mov: Movement): Result {
     const items = { "o": "crash", "*": "eat", "·": "none" }
     // Suppose every row has the same length
     const rowLength = board[0].length
@@ -28,7 +32,7 @@ function moveTrainTS(board: string[], mov: 'U' | 'D' | 'R' | 'L'): 'none' | 'cra
 }
 
 // Cognitive complexity of 2
-function moveTrain2TS(board: string[], mov: 'U' | 'D' | 'R' | 'L'): 'none' | 'crash' | 'eat' {
+function moveTrain2TS(board: Board, mov: Movement): Result {
     const itemsMapping = { "o": "crash", "*": "eat", "·": "none" }
     // Suppose every row has the same length
     const rowLength = board[0].length
