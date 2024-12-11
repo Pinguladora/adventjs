@@ -9,3 +9,9 @@ function decodeFilename(filename) {
     const realFilename = filename.substring(startIndex, endIndex)
     return realFilename + filename.slice(endIndex, endExt)
 }
+
+function decodeFilenameFaster(filename) {
+    const startIndex = filename.indexOf('_') + 1
+    const secondDotIndex = filename.indexOf('.', filename.indexOf('.') + 1)
+    return filename.slice(startIndex, secondDotIndex)
+}
