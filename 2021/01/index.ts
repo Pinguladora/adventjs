@@ -3,14 +3,14 @@ interface Oveja {
     color: string
 }
 // No regex
-export default function contarOvejas(ovejas: Oveja[]) {
+export default function contarOvejas(ovejas: Oveja[]): Oveja[] {
     return ovejas.filter(({ color, name }) => color === "rojo" &&
         name.toLowerCase().includes("a") &&
         name.toLowerCase().includes("n"))
 }
 
 // With regex
-export function contarOvejasRegex(ovejas: Oveja[]) {
+export function contarOvejasRegex(ovejas: Oveja[]): Oveja[] {
     return ovejas.filter(({ color, name }) =>
         color === "rojo" && /a.*n|n.*a/i.test(name)
     );
