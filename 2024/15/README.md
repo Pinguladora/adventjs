@@ -1,36 +1,44 @@
-# Challenge #14: 🦌 Weaving the reno
+# Challenge #15: ✏️ Drawing tables
 
-Reindeer need to move to occupy the stables, but there cannot be more than one reindeer per stable. Additionally, to keep the reindeer comfortable, we must minimize the total distance they travel to get settled.
+ChatGPT has arrived at the North Pole and the elf Sam Elfman is working on an application for managing gifts and children.
 
-We have two parameters:
+To enhance the presentation, he wants to create a function drawTable that receives an array of objects and converts it into a text table.
 
-- reindeer: An array of integers representing the positions of the reindeer.
-- stables: An array of integers representing the positions of the stables.
+The drawn table should represent the object data as follows:
 
-Each reindeer must be moved from its current position to a stable. However, it is important to note that there can only be one reindeer per stable.
+- It has a header with the column name.
+- The column name has the first letter capitalized.
+- Each row should contain the values of the objects in the corresponding order.
+- Each value must be left-aligned.
+- Fields always leave a space on the left.
+- Fields leave the necessary space on the right to align the box.
 
-Your task is to calculate the minimum number of moves needed for all the reindeer to end up in a stable.
-
-Note: Keep in mind that the stables array will always be the same size as the reindeer array and that the stables will always be unique.
-
-Example
+Look at the example to see how you should draw the table:
 
 ```javascript
-minMovesToStables([2, 6, 9], [3, 8, 5]) // -> 3
-// Explanation:
-// Reindeer at positions: 2, 6, 9
-// Stables at positions: 3, 8, 5
-// 1st reindeer: moves from position 2 to the stable at position 3 (1 move).
-// 2nd reindeer: moves from position 6 to the stable at position 5 (1 move)
-// 3rd reindeer: moves from position 9 to the stable at position 8 (1 move).
-// Total moves: 1 + 1 + 1 = 3 moves
+drawTable([
+  { name: 'Alice', city: 'London' },
+  { name: 'Bob', city: 'Paris' },
+  { name: 'Charlie', city: 'New York' }
+])
+// +---------+-----------+
+// | Name    | City      |
+// +---------+-----------+
+// | Alice   | London    |
+// | Bob     | Paris     |
+// | Charlie | New York  |
+// +---------+-----------+
 
-minMovesToStables([1, 1, 3], [1, 8, 4])
-// Explanation:
-// Reindeer at positions: 1, 1, 3
-// Stables at positions: 1, 8, 4
-// 1st reindeer: does not move (0 moves)
-// 2nd reindeer: moves from position 1 to the stable at position 4 (3 moves)
-// 3rd reindeer: moves from position 3 to the stable at position 8 (5 moves)
-// Total moves: 0 + 3 + 5 = 8 moves
+drawTable([
+  { gift: 'Doll', quantity: 10 },
+  { gift: 'Book', quantity: 5 },
+  { gift: 'Music CD', quantity: 1 }
+])
+// +----------+----------+
+// | Gift     | Quantity |
+// +----------+----------+
+// | Doll     | 10       |
+// | Book     | 5        |
+// | Music CD | 1        |
+// +----------+----------+
 ```
