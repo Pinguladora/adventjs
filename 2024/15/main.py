@@ -1,26 +1,71 @@
-def min_moves_to_stables(reindeer: list[int], stables: list[int]) -> int:
-    s_reindeer = sorted(reindeer)
-    s_stables = sorted(stables)
+def draw_table(data: list[dict[str, str | int]]) -> str:
+    columns = list(data[0].keys())
+    headers = [col.capitalize() for col in columns]
 
-    return sum(abs(r - s) for r, s in zip(s_reindeer, s_stables))
+    col_widths = []
+    for col in columns:
+        max_width = 0
+        for row in data:
+            length = len(str(row[col]))
+            max_width = max(max_width, length)
+        col_widths.append(max_width)
+
+    # Header or column width
+    for i, header in enumerate(headers):
+        col_widths[i] = max(len(header), col_widths[i])
+
+    # Table border
+    border = []
+    for w in col_widths:
+        line = "-" * (w + 2)
+        border.append(line)
+    border = f"+{"+".join(border)}+"
+
+    # Helper
+    # Must maintain lazy evaluation
+    def create_row(values):
+        content = " | ".join(f"{str(v).ljust(w)}" for v, w in zip(values, col_widths))
+        return f"| {content} |"
+
+    header_row = create_row(headers)
+
+    data_rows = []
+    for row in data:
+        row_values = [row[col] for col in columns]
+        data_rows.append(create_row(row_values))
+    data_rows = "\n".join(data_rows)
+
+    table = f"{border}\n{header_row}\n{border}\n{data_rows}\n{border}"
+    print(table)
+    return table
 
 
-res = min_moves_to_stables([2, 6, 9], [3, 8, 5])  # -> 3
-print(res)
-# Explanation:
-# Reindeer at positions: 2, 6, 9
-# Stables at positions: 3, 8, 5
-# 1st reindeer: moves from position 2 to the stable at position 3 (1 move).
-# 2nd reindeer: moves from position 6 to the stable at position 5 (1 move)
-# 3rd reindeer: moves from position 9 to the stable at position 8 (1 move).
-# Total moves: 1 + 1 + 1 = 3 moves
+draw_table(
+    [
+        {"name": "Alice", "city": "London"},
+        {"name": "Bob", "city": "Paris"},
+        {"name": "Charlie", "city": "New York"},
+    ]
+)
+# +---------+-----------+
+# | Name    | City      |
+# +---------+-----------+
+# | Alice   | London    |
+# | Bob     | Paris     |
+# | Charlie | New York  |
+# +---------+-----------+
 
-res = min_moves_to_stables([1, 1, 3], [1, 8, 4])
-print(res)
-# Explanation:
-# Reindeer at positions: 1, 1, 3
-# Stables at positions: 1, 8, 4
-# 1st reindeer: does not move (0 moves)
-# 2nd reindeer: moves from position 1 to the stable at position 4 (3 moves)
-# 3rd reindeer: moves from position 3 to the stable at position 8 (5 moves)
-# Total moves: 0 + 3 + 5 = 8 moves
+draw_table(
+    [
+        {"gift": "Doll", "quantity": 10},
+        {"gift": "Book", "quantity": 5},
+        {"gift": "Music CD", "quantity": 1},
+    ]
+)
+# +----------+----------+
+# | Gift     | Quantity |
+# +----------+----------+
+# | Doll     | 10       |
+# | Book     | 5        |
+# | Music CD | 1        |
+# +----------+----------+
