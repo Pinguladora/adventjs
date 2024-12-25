@@ -4,7 +4,7 @@
  * @returns {{ name: string, address: string } | null}
  */
 function findInAgenda(agenda, phone) {
-    const phoneRegex = /(\+\d{1,3}-\d{3}-\d{3}-\d{3})/;
+    const phoneRegex = /(\+\d{1,3}-\d{3}-\d{3}-\d{3,4})/;
     const nameRegex = /<([^>]+)>/;
     const addressRegex = /(?:<[^>]+>|\+\d{1,3}-\d{3}-\d{3}-\d{3})?\s*(.+?)\s*(?=<|\+\d)/;
 

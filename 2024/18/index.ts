@@ -1,5 +1,5 @@
 export default function findInAgenda(agenda: string, phone: string): { name: string; address: string } | null {
-    const phoneRegex = /(\+\d{1,3}-\d{3}-\d{3}-\d{3})/;
+    const phoneRegex = /(\+\d{1,3}-\d{3}-\d{3}-\d{3,4})/;
     const nameRegex = /<([^>]+)>/;
     const addressRegex = /(?:<[^>]+>|\+\d{1,3}-\d{3}-\d{3}-\d{3})?\s*(.+?)\s*(?=<|\+\d)/;
 
