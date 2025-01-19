@@ -1,0 +1,5 @@
+# Ignore environment specific settings
+mise.toml
+
+# IDE
+.vscode
